@@ -1,13 +1,16 @@
 import React from 'react';
+import styles from './Artwork.module.css';
+import {Link} from 'react-router-dom';
 
 const Artwork = ({ artwork }) => {
-    // console.log('Artwork component is being called, artwork:', artwork);
 
     return (
-        <div style={{ border: '1px solid blue', padding: '10px', margin: '10px' }}>
-            <h1>Artwork Component</h1>
-            <p>Artwork data: {artwork ? JSON.stringify(artwork) : 'Not available'}</p>
-        </div>
+        <Link to={`/artwork/${artwork.objectID}`} className={styles.artworkContainer}>
+            <h1 className={styles.artworkTitle}>{artwork.title}</h1>
+            <h4 className={styles.artistName} >Artist: {artwork.artistDisplayName}</h4>
+            <h4 className={styles.artworkPrice} >Price: ${artwork.price}</h4>
+            <img src={artwork.primaryImage} className={styles.artworkImage}></img>
+        </Link>
     );
 };
 

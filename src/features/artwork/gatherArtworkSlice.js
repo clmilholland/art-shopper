@@ -70,7 +70,21 @@ const artworkSlice = createSlice({
             .addCase(getArtwork.fulfilled, (state, action) => {
                 state.loading = false;
                 state.error = null;
-                state.artwork[action.payload.artID] = action.payload.data;
+                const ID = action.payload.artID
+                state.artwork[ID] = action.payload.data;
+                //set a price for artwork
+                let randomNumber;
+                if(state.artwork[ID].objectBeginDate < 1600) {
+                    randomNumber = Math.floor(Math.random() * 1000000);
+                } else {
+                    randomNumber = Math.floor(Math.random() * 10000);
+                }
+                state.artwork[ID].price = randomNumber
+                //set a artist if there is none
+                if(!state.artwork[ID].artistDisplayName.length > 0) {
+                    state.artwork[ID].artistDisplayName = 'Unknown'
+                } 
+               
             })
             .addCase(getArtwork.rejected, (state, action) => {
                 state.loading = false;

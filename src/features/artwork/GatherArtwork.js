@@ -50,8 +50,10 @@ const GatherArtwork = () => {
         <>
             {hasAllArtworkData ? (
                 artworkIDs.map((id) => {
+                    if (artwork[id] && artwork[id].primaryImage.length > 0) {
                     console.log(`Mapping Artwork for ID ${id}, artwork data:`, artwork[id]);
                     return <Artwork key={id} artwork={artwork[id]} />;
+                    }
                 })
             ) : (
                 <p>Loading...</p>
