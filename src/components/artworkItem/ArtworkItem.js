@@ -1,19 +1,21 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectALLArtwork } from "../../features/artwork/gatherArtworkSlice";
+import { addToCart } from "../../features/cart/cartSlice";
 import styles from './ArtworkItem.module.css';
 
 const ArtworkItem = () => {
     const { ID } = useParams();
     const artwork = useSelector(selectALLArtwork);
+    const dispatch = useDispatch();
 
     if (!artwork[ID]) {
         return <div className={styles.error}>Artwork not found</div>;
     }
 
     const handleClick = () => {
-        
+        dispatch(addToCart(artwork[ID]))
     }
 
     return (
@@ -57,7 +59,7 @@ const ArtworkItem = () => {
                         <h4>Price</h4>
                         <h2>${artwork[ID].price}</h2>
                     </div>
-                    <button type="button" className={styles.cartButton} onClick={handleClick()} >
+                    <button type="button" className={styles.cartButton} onClick={handleClick} >
                         Add to Cart
                     </button>
                 </div>
