@@ -25,7 +25,7 @@ const GatherCart = () => {
                 })}
             </div>
             <h2>Total: {getCartTotal()}</h2>
-            <Link to={'cart/checkout'} >
+            <Link to={'/checkout'} >
                 <button type="button">Check Out</button>
             </Link>
         </div>
