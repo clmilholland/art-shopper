@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllArtworkIDs, selectALLArtwork, getArtwork, getArtworkIDs } from "./gatherArtworkSlice";
 import Artwork from "../../components/artwork/Artwork";
 import styles from './GatherArtwork.module.css';
+import SideCart from "../../components/sideCart/SideCart";
+import SideFilter from "../../components/sideFilter/SideFilter";
 
 const gatheringArtworkIDs = new Set();
 
@@ -49,19 +51,21 @@ const GatherArtwork = () => {
 
     return (
         <div className={styles.container}>
-            {hasAllArtworkData ? (
-                <div className={styles.grid}>
-                    {artworkIDs.map((id) => {
+            <SideFilter />
+            <div className={styles.grid}>
+                {hasAllArtworkData ? (
+                    artworkIDs.map((id) => {
                         if (artwork[id] && artwork[id].primaryImage.length > 0) {
                             console.log(`Mapping Artwork for ID ${id}, artwork data:`, artwork[id]);
                             return <Artwork key={id} artwork={artwork[id]} />;
                         }
                         return null; // Return null if the artwork doesn't meet the condition
-                    })}
-                </div>
-            ) : (
-                <p className={styles.loading}>Loading...</p>
-            )}
+                    })
+                ) : (
+                    <p className={styles.loading}>Loading...</p>
+                )}
+            </div>
+            <SideCart />
         </div>
     );
 };

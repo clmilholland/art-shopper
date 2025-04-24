@@ -1,65 +1,100 @@
+/* src/features/artwork/Artwork.module.css */
 .artworkContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
-    border: 1px solid #e2e2e2;
-    border-radius: 8px;
-    padding: 24px;
-    margin: 16px;
-    width: 100%;
-    max-width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none; /* Removes underline from Link */
-    color: inherit; /* Inherits text color to avoid default blue */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.artworkContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.artworkLink {
+  text-decoration: none; /* Removes underline from Link */
+  color: inherit; /* Inherits text color to avoid default blue */
+  width: 100%; /* Ensure the link takes the full width of the card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.artworkImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.artworkTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d2d2d;
+  text-align: center;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  line-height: 1.4;
+  height: 56px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.date {
+  font-size: 16px;
+  font-weight: 500;
+  color: #555555;
+  margin-bottom: 16px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.artworkPrice {
+  font-size: 14px;
+  font-weight: 700;
+  color: #d32f2f;
+  margin-bottom: 16px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.cartButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #3498db; /* Blue to match the app's theme */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cartButton:hover:not(:disabled) {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+.cartButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .artworkContainer {
+      margin: 0; /* Ensure no margin to avoid doubling with grid gap */
   }
-  
-  .artworkContainer:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .artworkImage {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 16px;
-  }
-  
-  .artworkTitle {
-    font-size: 20px;
-    font-weight: 600;
-    color: #2d2d2d;
-    text-align: center;
-    margin-bottom: 8px;
-    line-height: 1.4;
-    height: 56px; /* Ensures consistent title height */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
-  
-  .artistName {
-    font-size: 16px;
-    font-weight: 500;
-    color: #555555;
-    margin-bottom: 8px;
-  }
-  
-  .artworkPrice {
-    font-size: 14px;
-    font-weight: 700;
-    color: #d32f2f;
-    margin-bottom: 16px;
-  }
-  
-  /* Responsive grid for multiple artwork containers */
-  @media (min-width: 640px) {
-    .artworkContainer {
-      margin: 8px;
-    }
-  }
+}

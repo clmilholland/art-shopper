@@ -1,0 +1,89 @@
+/* src/features/cart/SideCart.module.css */
+.sideCart {
+    position: fixed;
+    top: 60px; /* Below the fixed header */
+    right: 0;
+    width: 300px; /* Fixed width for the sidebar */
+    height: calc(100vh - 80px); /* Full height minus the header */
+    background-color: #2c3e50; /* Match the header's blue background */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow on the left */
+    padding: 20px;
+    z-index: 900; /* Below the header but above other content */
+    display: flex; /* Use flexbox to position the button at the bottom */
+    flex-direction: column; /* Stack children vertically */
+}
+
+.header {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ecf0f1; /* Light color for contrast against the dark background */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.content {
+    flex-grow: 1; /* Allow the content to grow and push the button to the bottom */
+    overflow-y: auto; /* Scroll if content overflows */
+    max-height: 700px;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between cart items */
+}
+
+.empty {
+    text-align: center;
+    color: #ecf0f1; /* Light color for contrast */
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.cartLink {
+    text-decoration: none;
+    display: block;
+    margin-top: 20px; /* Space above the button */
+}
+
+.button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db; /* Blue button to match the theme */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .sideCart {
+        width: 250px; /* Slightly narrower on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .sideCart {
+        position: static; /* Remove fixed positioning on small screens */
+        width: 100%; /* Full width */
+        height: auto; /* Auto height */
+        box-shadow: none; /* Remove shadow */
+        border-top: 1px solid #ddd; /* Add a top border for separation */
+        margin-top: 20px;
+    }
+
+    .header {
+        font-size: 18px;
+    }
+
+    .button {
+        font-size: 14px;
+    }
+}

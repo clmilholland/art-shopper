@@ -8,10 +8,12 @@ import CheckoutForm from '../components/checkoutForm/CheckoutForm';
 import Home from '../components/home/Home';
 
 
+
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Root/>} >
     <Route index element={<Home/>} />
-    <Route path='artwork' element={<GatherArtwork/>} />
+    <Route path='artwork' element={<GatherArtwork/>} >
+    </Route>
     <Route path='artwork/:ID' element={<ArtworkItem/>} />
     <Route path='cart' element={<GatherCart/>} />
     <Route path='checkout' element={<CheckoutForm/>} />
