@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const GatherCart = () => {
     const cart = useSelector(selectCart);
+    console.log(cart)
 
     const getCartTotal = () => {
         let total = 0;
@@ -20,9 +21,12 @@ const GatherCart = () => {
         <div className={styles.cartContainer} >
             <h1>Cart</h1>
             <div className={styles.cartItemContainer}>
-                {cart.map((item) => {
-                    return <ItemInCart key={item.objectID} item={item}/>
-                })}
+                {cart.length > 0 ?
+                    cart.map((item) => {
+                        return <ItemInCart key={item.objectID} item={item}/>
+                    })
+                    : <h5 className={styles.emptyCart}>Cart Is Empty</h5>
+                }
             </div>
             <h2>Total: {getCartTotal()}</h2>
             <Link to={'/checkout'} >

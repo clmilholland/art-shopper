@@ -140,6 +140,10 @@
   .cartButton:hover {
     background-color: #b71c1c;
   }
+
+  .cartButton:disabled {
+    background-color: #555555;
+  }
   
   .error {
     text-align: center;

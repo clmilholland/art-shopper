@@ -2,17 +2,20 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectALLArtwork } from "../../features/artwork/gatherArtworkSlice";
-import { addToCart } from "../../features/cart/cartSlice";
+import { addToCart, selectCart } from "../../features/cart/cartSlice";
 import styles from './ArtworkItem.module.css';
 
 const ArtworkItem = () => {
     const { ID } = useParams();
     const artwork = useSelector(selectALLArtwork);
+    const cart = useSelector(selectCart);
     const dispatch = useDispatch();
 
     if (!artwork[ID]) {
         return <div className={styles.error}>Artwork not found</div>;
     }
+
+    const isItemInCart = cart.some(item => item.objectID === artwork[ID].objectID);
 
     const handleClick = () => {
         dispatch(addToCart(artwork[ID]))
@@ -58,8 +61,9 @@ const ArtworkItem = () => {
                     <div className={styles.priceContainer}>
                         <h4>Price</h4>
                         <h2>${artwork[ID].price}</h2>
-                    </div>
-                    <button type="button" className={styles.cartButton} onClick={handleClick} >
+                    </div> 
+                    {}
+                    <button type="button" className={styles.cartButton} onClick={handleClick} disabled={isItemInCart}>
                         Add to Cart
                     </button>
                 </div>
