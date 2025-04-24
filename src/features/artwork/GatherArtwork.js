@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAllArtworkIDs, selectALLArtwork, getArtwork, getArtworkIDs } from "./gatherArtworkSlice";
 import Artwork from "../../components/artwork/Artwork";
+import styles from './GatherArtwork.module.css';
 
 const gatheringArtworkIDs = new Set();
 
@@ -47,18 +48,21 @@ const GatherArtwork = () => {
     }, [artwork, hasDispatchedAllArtwork, artworkIDs.length]);
 
     return (
-        <>
+        <div className={styles.container}>
             {hasAllArtworkData ? (
-                artworkIDs.map((id) => {
-                    if (artwork[id] && artwork[id].primaryImage.length > 0) {
-                    console.log(`Mapping Artwork for ID ${id}, artwork data:`, artwork[id]);
-                    return <Artwork key={id} artwork={artwork[id]} />;
-                    }
-                })
+                <div className={styles.grid}>
+                    {artworkIDs.map((id) => {
+                        if (artwork[id] && artwork[id].primaryImage.length > 0) {
+                            console.log(`Mapping Artwork for ID ${id}, artwork data:`, artwork[id]);
+                            return <Artwork key={id} artwork={artwork[id]} />;
+                        }
+                        return null; // Return null if the artwork doesn't meet the condition
+                    })}
+                </div>
             ) : (
-                <p>Loading...</p>
+                <p className={styles.loading}>Loading...</p>
             )}
-        </>
+        </div>
     );
 };
 

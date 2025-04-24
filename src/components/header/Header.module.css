@@ -1,0 +1,107 @@
+/* src/components/Header.module.css */
+.header {
+    display: flex;
+    justify-content: space-between; /* Distribute space between logo, nav, and cart */
+    align-items: center;
+    background-color: #2c3e50; /* Dark blue background */
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    margin: 0;
+    font-size: 24px;
+    color: #ecf0f1; /* Light color for the logo text */
+    font-weight: 700;
+    flex-shrink: 0; /* Prevent logo from shrinking */
+    width: 10rem;
+}
+
+.nav {
+    display: flex;
+    gap: 20px; /* Space between nav links */
+    justify-content: center; /* Center the links */
+    flex-grow: 1; /* Take up available space to center properly */
+    flex-shrink: 0; /* Prevent nav from shrinking too much */
+}
+
+.link {
+    color: #ecf0f1; /* Light color for links */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #3498db; /* Blue hover effect */
+}
+
+.activeLink {
+    color: #3498db; /* Blue for active link */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.cartContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevent cart from shrinking */
+    width: 10rem;
+    justify-content: end;
+}
+
+.cartIcon {
+    color: #ecf0f1;
+    font-size: 20px;
+}
+
+.cartIcon:hover {
+    color: #3498db;
+}
+
+.cartCount {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #e74c3c; /* Red background for cart count */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
+    .nav {
+        margin: 10px 0;
+        gap: 15px;
+    }
+
+    .cartContainer {
+        margin-top: 10px;
+    }
+
+    .link,
+    .activeLink {
+        font-size: 14px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+}

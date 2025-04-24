@@ -1,0 +1,38 @@
+/* src/features/artwork/GatherArtwork.module.css */
+.container {
+    padding: 20px;
+    margin-top: 80px; /* Account for the fixed header */
+    max-width: 1200px; /* Center the content with a max width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between cards */
+}
+
+.loading {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-top: 50px;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr; /* 1 column on small screens */
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
