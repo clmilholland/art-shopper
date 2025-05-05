@@ -1,0 +1,189 @@
+.sideFilter {
+  position: fixed;
+  top: 60px; /* Below the fixed header */
+  left: 0; /* Position on the left side */
+  width: 150px; /* Match the responsive width of SideCart */
+  height: calc(100vh - 80px); /* Full height minus the header */
+  background-color: #2c3e50; /* Match the header's blue background */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow on the right */
+  padding: 20px;
+  z-index: 900; /* Below the header but above other content */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+}
+
+.header {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ecf0f1; /* Light color for contrast */
+  margin-bottom: 20px;
+  /* text-align: center; */
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filterLabel {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ecf0f1; /* Light color for contrast */
+  text-transform: uppercase;
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overscroll-behavior: contain;
+  /* border-left: 2px solid #3498db; */
+  /* padding-left: 5px; */
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px; /* Reduced gap to match smaller checkbox */
+  color: #ecf0f1; /* Light color for contrast */
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%; /* Ensure consistent width */
+}
+
+.labelText {
+  flex: 1; /* Allow text to take remaining space */
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Natural ellipsis when text overflows */
+  white-space: nowrap; /* Truncate by default */
+  max-width: 110px; /* Fit within 150px sideFilter, leaving space for checkbox */
+  transition: max-width 0.3s ease; /* Smooth transition for expansion */
+}
+
+.checkboxLabel:hover .labelText,
+.checkboxLabel:focus-within .labelText {
+  max-width: 200px; /* Expand on hover or focus */
+  overflow: visible;
+  white-space: normal; /* Allow wrapping */
+  text-overflow: initial;
+}
+
+.checkbox {
+  width: 12px; /* Smaller checkbox */
+  height: 12px; /* Smaller checkbox */
+  accent-color: #3498db; /* Blue theme for checked state */
+  cursor: pointer;
+  margin-left: 0;
+  flex-shrink: 0; /* Prevent checkbox from resizing */
+  margin-top: 2px; /* Align with text */
+}
+
+.checkbox:hover {
+  opacity: 0.8;
+}
+
+.checkbox:focus {
+  outline: none;
+  /* box-shadow: 0 0 0 2px #3498db; */
+}
+
+.filterInput {
+  background-color: #34495e; /* Slightly lighter than the background */
+  color: #ecf0f1; /* Light color for contrast */
+  border: 1px solid #465c71; /* Subtle border */
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filterInput::placeholder {
+  color: #95a5a6; /* Muted color for placeholder */
+}
+
+.filterInput:focus {
+  outline: none;
+  border-color: #3498db; /* Match the blue theme */
+}
+
+.submitButton {
+  width: 100%; /* Full width */
+  padding: 8px;
+  background-color: #3498db; /* Blue to match theme */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.submitButton:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+.submitButton:focus {
+  outline: none;
+  background-color: #2980b9;
+}
+
+.submitButton:active {
+  transform: scale(0.98);
+}
+
+.removeLink {
+  display: block;
+  text-align: center;
+  color: #e74c3c; /* Red for remove action */
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+.removeLink:hover {
+  text-decoration: underline;
+}
+
+.removeLink:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .sideFilter {
+    width: 200px; /* Slightly narrower on medium screens */
+  }
+
+  .labelText {
+    max-width: 160px; /* Adjust for wider sideFilter */
+  }
+}
+
+@media (max-width: 768px) {
+  .sideFilter {
+    position: static; /* Remove fixed positioning on small screens */
+    width: 100%; /* Full width */
+    height: auto; /* Auto height */
+    box-shadow: none; /* Remove shadow */
+    border-top: 1px solid #465c71; /* Add a top border for separation */
+    margin-top: 20px;
+  }
+
+  .header {
+    font-size: 18px;
+  }
+
+  .labelText {
+    max-width: none; /* Allow full width on mobile */
+    white-space: normal; /* Wrap text on mobile */
+    text-overflow: initial; /* No ellipsis on mobile */
+  }
+}

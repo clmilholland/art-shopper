@@ -8,6 +8,7 @@ const Artwork = ({ artwork }) => {
     const cart = useSelector(selectCart);
     const dispatch = useDispatch();
 
+
     const isItemInCart = cart.some(item => item.objectID === artwork.objectID);
 
     const handleClick = () => {
