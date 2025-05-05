@@ -1,20 +1,21 @@
-/* src/features/artwork/GatherArtwork.module.css */
 .container {
     padding: 20px;
     margin-top: 80px; /* Account for the fixed header */
-    max-width: 1200px; /* Center the content with a max width */
+    max-width: 1600px; /* Center the content with a max width */
     margin-left: auto;
     margin-right: auto;
     display: flex; /* Use flex to layout grid and sidebar */
     gap: 20px; /* Space between grid and sidebar */
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ensure each column is at least 300px wide */
-    gap: 40px; /* Space between cards */
+    grid-template-columns: repeat(4, 1fr); /* Exactly 4 columns */
+    gap: 15px; /* Reduced gap for a tighter layout */
     flex-grow: 1; /* Take up remaining space */
-    max-width: calc(100% - 320px); /* Leave space for the sidebar (300px + 20px gap) */
+    margin-left: 190px; /* Offset for the fixed SideFilter (150px width + 20px padding + 20px gap) */
 }
 
 .loading {
@@ -24,12 +25,28 @@
     margin-top: 50px;
 }
 
+.refreshButton {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 200px;
+}
+
+.refreshButton:hover {
+    background-color: #2980b9;
+}
+
 /* Responsive design */
 @media (max-width: 1024px) {
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Maintain minimum 300px width */
-        max-width: calc(100% - 270px); /* Adjust for narrower sidebar (250px + 20px gap) */
-        gap: 30px; /* Slightly smaller gap on medium screens */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+        margin-left: 240px; /* Adjust for wider SideFilter (200px width + 20px padding + 20px gap) */
+        gap: 12px; /* Slightly smaller gap */
     }
 }
 
@@ -39,8 +56,16 @@
     }
 
     .grid {
-        grid-template-columns: 1fr; /* 1 column on small screens */
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+        margin-left: 0; /* No offset since SideFilter is no longer fixed */
         max-width: 100%; /* Full width */
-        gap: 20px; /* Smaller gap on mobile */
+        gap: 10px; /* Smaller gap on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+        gap: 10px;
     }
 }

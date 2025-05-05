@@ -20,7 +20,6 @@
   font-weight: 600;
   color: #ecf0f1; /* Light color for contrast */
   margin-bottom: 20px;
-  /* text-align: center; */
 }
 
 .filterSection {
@@ -41,8 +40,6 @@
   flex-direction: column;
   gap: 5px;
   overscroll-behavior: contain;
-  /* border-left: 2px solid #3498db; */
-  /* padding-left: 5px; */
 }
 
 .checkboxLabel {
@@ -89,7 +86,7 @@
 
 .checkbox:focus {
   outline: none;
-  /* box-shadow: 0 0 0 2px #3498db; */
+  box-shadow: 0 0 0 2px #3498db;
 }
 
 .filterInput {

@@ -9,10 +9,10 @@ const SideFilter = ({setIsFiltered, artwork}) => {
     const dispatch = useDispatch();
     const cultureFilters = useSelector(selectCultureFilters);
     const activeFilters = useSelector(selectActiveFilters);
-    console.log(cultureFilters)
+    // console.log(cultureFilters)
 
-    console.log("SideFilter - cultureFilters:", cultureFilters);
-  console.log("SideFilter - activeFilters:", activeFilters);
+  // console.log("SideFilter - cultureFilters:", cultureFilters);
+  // console.log("SideFilter - activeFilters:", activeFilters);
 
   const priceInputRef = useRef(null);
   const endDateInputRef = useRef(null);

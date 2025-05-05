@@ -11,39 +11,60 @@ const Header = () => {
 
     return (
         <header className={styles.header}>
-            <h2 className={styles.logo}>Art Shopper</h2>
-            <nav className={styles.nav}>
-                <NavLink
-                    to="/"
-                    className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
-                >
-                    Home
-                </NavLink>
-                <NavLink
-                    to="/artwork"
-                    className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
-                >
-                    Artwork
-                </NavLink>
-                <NavLink
-                    to="/contactUs"
-                    className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
-                >
-                    Contact Us
-                </NavLink>
-            </nav>
-            <NavLink
-                to="/cart"
-                className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
-            >
-                <div className={styles.cartContainer}>
-                    <FaCartShopping className={styles.cartIcon} />
-                    {cartCount > 0 && (
-                        <span className={styles.cartCount}>{cartCount}</span>
-                    )}
-                </div>
-            </NavLink>
-        </header>
+    <h2 className={styles.logo}>Art Shopper</h2>
+    <div className={styles.rightSection}>
+        <nav className={styles.nav}>
+            <NavLink to="/" className={({ isActive }) => isActive ? styles.activeLink : styles.link}>Home</NavLink>
+            <NavLink to="/artwork" className={({ isActive }) => isActive ? styles.activeLink : styles.link}>Artwork</NavLink>
+            <NavLink to="/contactUs" className={({ isActive }) => isActive ? styles.activeLink : styles.link}>Contact Us</NavLink>
+        </nav>
+        <NavLink to="/cart" className={({ isActive }) => isActive ? styles.activeLink : styles.link}>
+            <div className={styles.cartContainer}>
+                Cart
+                <FaCartShopping className={styles.cartIcon} />
+                {cartCount > 0 && (
+                    <span className={styles.cartCount}>{cartCount}</span>
+                )}
+            </div>
+        </NavLink>
+    </div>
+</header>
+
+        // <header className={styles.header}>
+        //     <h2 className={styles.logo}>Art Shopper</h2>
+        //     <nav className={styles.nav}>
+        //         <NavLink
+        //             to="/"
+        //             className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
+        //         >
+        //             Home
+        //         </NavLink>
+        //         <NavLink
+        //             to="/artwork"
+        //             className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
+        //         >
+        //             Artwork
+        //         </NavLink>
+        //         <NavLink
+        //             to="/contactUs"
+        //             className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
+        //         >
+        //             Contact Us
+        //         </NavLink>
+        //     </nav>
+        //     <NavLink
+        //         to="/cart"
+        //         className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
+        //     >
+        //         <div className={styles.cartContainer}>
+        //             Cart
+        //             <FaCartShopping className={styles.cartIcon} />
+        //             {cartCount > 0 && (
+        //                 <span className={styles.cartCount}>{cartCount}</span>
+        //             )}
+        //         </div>
+        //     </NavLink>
+        // </header>
     );
 }
 

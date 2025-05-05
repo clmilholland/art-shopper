@@ -1,13 +1,13 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { selectALLArtwork } from "../../features/artwork/gatherArtworkSlice";
+import { selectAllArtwork } from "../../features/artwork/gatherArtworkSlice";
 import { addToCart, selectCart } from "../../features/cart/cartSlice";
 import styles from './ArtworkItem.module.css';
 
 const ArtworkItem = () => {
     const { ID } = useParams();
-    const artwork = useSelector(selectALLArtwork);
+    const artwork = useSelector(selectAllArtwork);
     const cart = useSelector(selectCart);
     const dispatch = useDispatch();
 

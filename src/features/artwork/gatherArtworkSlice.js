@@ -95,7 +95,7 @@ const artworkSlice = createSlice({
 
 
 export const selectAllArtworkIDs = (state) => state.artwork.artworkIDs;
-export const selectALLArtwork = (state) => state.artwork.artwork;
+export const selectAllArtwork = (state) => state.artwork.artwork;
 export const selectLoading = (state) => state.artwork.loading;
 export const selectError = (state) => state.artwork.error;
 export default artworkSlice.reducer;

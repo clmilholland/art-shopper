@@ -38,6 +38,9 @@ const FilteredArtwork = ({ activeFilters, artworkList }) => {
 
   console.log("filteredArtwork:", filteredArtwork);
 
+  if(filteredArtwork.length === 0) {
+    return <p>No Items Found</p>
+  } 
   // Map the filtered artwork to Artwork components
   return filteredArtwork.map((artwork) => (
     <Artwork key={artwork.id} artwork={artwork} />
