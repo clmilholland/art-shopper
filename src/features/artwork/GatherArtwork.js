@@ -1,9 +1,19 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllArtworkIDs, selectAllArtwork, getArtwork, getArtworkIDs } from "./gatherArtworkSlice";
+import {
+    selectAllArtworkIDs,
+    selectAllArtwork,
+    getArtwork,
+    getArtworkIDs,
+    selectHasFetchedArtworkIDs,
+    selectHasDispatchedAllArtwork,
+    selectHasAllArtworkData,
+    resetLoadState,
+    selectLoading,
+    selectError,
+} from "./gatherArtworkSlice";
 import Artwork from "../../components/artwork/Artwork";
 import styles from './GatherArtwork.module.css';
-import SideCart from "../../components/sideCart/SideCart";
 import SideFilter from "../../components/sideFilter/SideFilter";
 import FilteredArtwork from "../filteredArtwork/FilteredArtwork";
 import { selectActiveFilters } from "../filteredArtwork/filteredArtworkSlice";
@@ -14,60 +24,39 @@ const GatherArtwork = () => {
     const dispatch = useDispatch();
     const artworkIDs = useSelector(selectAllArtworkIDs);
     const artwork = useSelector(selectAllArtwork);
+    const hasFetchedArtworkIDs = useSelector(selectHasFetchedArtworkIDs);
+    const hasDispatchedAllArtwork = useSelector(selectHasDispatchedAllArtwork);
+    const hasAllArtworkData = useSelector(selectHasAllArtworkData);
+    const loading = useSelector(selectLoading);
+    const error = useSelector(selectError);
     const activeFilters = useSelector(selectActiveFilters);
-    const [hasFetchedArtworkIDs, setHasFetchedArtworkIDs] = useState(() => {
-        // Initialize with localStorage or false if not set
-        return localStorage.getItem('hasFetchedArtworkIDs') === 'true' || false;
-    });
-    const [hasDispatchedAllArtwork, setHasDispatchedAllArtwork] = useState(() => {
-        return localStorage.getItem('hasDispatchedAllArtwork') === 'true' || false;
-    });
-    const [hasAllArtworkData, setHasAllArtworkData] = useState(false);
     const [isFiltered, setIsFiltered] = useState(false);
     const [filterType, setFilterType] = useState(null);
     const [filterValue, setFilterValue] = useState(null);
 
-    // Fetch artworkIDs only if not previously fetched
+    // Fetch artworkIDs if not already fetched
     useEffect(() => {
         if (!hasFetchedArtworkIDs && !gatheringArtworkIDs.has('fetching')) {
             gatheringArtworkIDs.add('fetching');
             dispatch(getArtworkIDs()).finally(() => {
-                setHasFetchedArtworkIDs(true);
-                localStorage.setItem('hasFetchedArtworkIDs', 'true');
                 gatheringArtworkIDs.delete('fetching');
             });
         }
     }, [dispatch, hasFetchedArtworkIDs]);
 
-    // Fetch artwork data only if IDs are fetched and not previously dispatched
+    // Fetch artwork data when IDs are available and not yet dispatched
     useEffect(() => {
-        if (artworkIDs.length === 80 && !hasDispatchedAllArtwork) {
-            let dispatchCount = 0;
+        if (artworkIDs.length > 0 && !hasDispatchedAllArtwork) {
             artworkIDs.forEach((id) => {
-                dispatch(getArtwork(id)).finally(() => {
-                    dispatchCount += 1;
-                    if (dispatchCount === artworkIDs.length) {
-                        setHasDispatchedAllArtwork(true);
-                        localStorage.setItem('hasDispatchedAllArtwork', 'true');
-                    }
-                });
+                dispatch(getArtwork(id));
             });
         }
     }, [artworkIDs, dispatch, hasDispatchedAllArtwork]);
-
-    // Check if all artwork data has been fetched
-    useEffect(() => {
-        if (hasDispatchedAllArtwork && Object.keys(artwork).length >= artworkIDs.length) {
-            setHasAllArtworkData(true);
-        }
-    }, [artwork, hasDispatchedAllArtwork, artworkIDs.length]);
 
     const artworkToDisplay = () => {
         const artworkList = artworkIDs
             .map((id) => artwork[id])
             .filter((artwork) => artwork && artwork.primaryImage?.length > 0);
-
-        console.log(artworkList)
 
         if (!isFiltered) {
             return artworkList.map((artwork) => (
@@ -78,26 +67,21 @@ const GatherArtwork = () => {
     };
 
     const handleRefresh = useCallback(() => {
-        // Reset state and localStorage to trigger re-fetch
-        setHasFetchedArtworkIDs(false);
-        setHasDispatchedAllArtwork(false);
-        setHasAllArtworkData(false);
-        localStorage.removeItem('hasFetchedArtworkIDs');
-        localStorage.removeItem('hasDispatchedAllArtwork');
+        dispatch(resetLoadState());
         gatheringArtworkIDs.clear();
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className={styles.container}>
             <SideFilter setIsFiltered={setIsFiltered} setFilterType={setFilterType} setFilterValue={setFilterValue} artwork={artwork} />
-            {hasAllArtworkData ? <button onClick={handleRefresh} className={styles.refreshButton}>Refresh Artwork</button> : <></>}
+            {hasAllArtworkData ? <button onClick={handleRefresh} className={styles.refreshButton}>Refresh Artwork</button> : null}
             <div className={styles.grid}>
-                {hasAllArtworkData ? (
-                    <>
-                        {artworkToDisplay()}
-                    </>
-                ) : (
+                {error ? (
+                    <p className={styles.error}>Error: {error}</p>
+                ) : loading || !hasAllArtworkData ? (
                     <p className={styles.loading}>Loading...</p>
+                ) : (
+                    artworkToDisplay()
                 )}
             </div>
         </div>
