@@ -6,14 +6,15 @@ import ArtworkItem from '../components/artworkItem/ArtworkItem';
 import GatherCart from '../features/cart/GatherCart';
 import CheckoutForm from '../components/checkoutForm/CheckoutForm';
 import Home from '../components/home/Home';
+import ContactUs from '../components/contactUs/ContactUs';
 
 
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Root/>} >
     <Route index element={<Home/>} />
-    <Route path='artwork' element={<GatherArtwork/>} >
-    </Route>
+    <Route path='artwork' element={<GatherArtwork/>} />
+    <Route path='contactUs' element={<ContactUs/>} />
     <Route path='artwork/:ID' element={<ArtworkItem/>} />
     <Route path='cart' element={<GatherCart/>} />
     <Route path='checkout' element={<CheckoutForm/>} />
