@@ -9,7 +9,7 @@ export const Root = () => {
         <>
             <Header/>
             <Message/>
-            <main style={{ marginTop: "80px" }}>
+            <main style={{ marginTop: "62px" }}>
                 <Outlet/>
             </main>
             <Footer/>
