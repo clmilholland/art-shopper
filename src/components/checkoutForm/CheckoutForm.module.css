@@ -1,111 +1,210 @@
+.wrapper {
+  width: 100%;
+  min-height: calc(100vh - 62px);
+  background: linear-gradient(135deg, #2c3e50 0%, #1a2634 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #ecf0f1;
+  overflow: hidden;
+}
+
 .checkoutContainer {
-    width: 100%;
-    max-width: 800px;
-    margin: 16px auto;
-    padding: 16px;
-    background-color: #ffffff;
-    border: 1px solid #e2e2e2;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1000px;
+  width: 100%;
+  align-items: center;
+}
+
+.checkoutContainer h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ecf0f1;
+  text-align: center;
+  margin: 0 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #34495e;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #465c71;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.section h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ecf0f1;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.formGroup label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ecf0f1;
+  text-transform: uppercase;
+}
+
+.formGroup input {
+  background-color: #465c71;
+  color: #ecf0f1;
+  border: 1px solid #465c71;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formGroup input::placeholder {
+  color: #95a5a6;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.submitButton {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: #ecf0f1;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.submitButton:focus {
+  outline: none;
+}
+
+.submitButton:active {
+  transform: scale(0.98);
+}
+
+.submitButton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.submitButton:hover::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .wrapper {
+      height: auto;
+      overflow: visible;
+      padding: 20px;
+      background: #2c3e50;
   }
-  
-  .checkoutContainer h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #2d2d2d;
-    margin-bottom: 16px;
-    text-align: center;
+
+  .checkoutContainer {
+      gap: 20px;
   }
-  
+
   .checkoutForm {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+      padding: 15px;
+      max-width: 100%;
   }
-  
-  .section {
-    background-color: #f9f9f9;
-    padding: 12px;
-    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .checkoutContainer h2 {
+      font-size: 30px;
   }
-  
+
   .section h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #2d2d2d;
-    margin-bottom: 12px;
+      font-size: 18px;
   }
-  
-  .formGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 12px;
-  }
-  
+
   .formGroup label {
-    font-size: 14px;
-    font-weight: 500;
-    color: #2d2d2d;
+      font-size: 13px;
   }
-  
+
   .formGroup input {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #e2e2e2;
-    border-radius: 4px;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  
-  .formGroup input:focus {
-    border-color: #d32f2f;
-  }
-  
-  .submitButton {
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #ffffff;
-    background-color: #d32f2f;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: center;
-  }
-  
-  .submitButton:hover {
-    background-color: #b71c1c;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .checkoutContainer {
-      padding: 12px;
-      margin: 12px;
-    }
-  
-    .checkoutContainer h2 {
-      font-size: 20px;
-    }
-  
-    .section {
+      font-size: 13px;
       padding: 8px;
-    }
-  
-    .section h3 {
-      font-size: 14px;
-    }
-  
-    .formGroup label,
-    .formGroup input {
-      font-size: 12px;
-    }
-  
-    .submitButton {
-      font-size: 12px;
-      padding: 6px 12px;
-    }
   }
+
+  .submitButton {
+      padding: 10px;
+      font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkoutContainer h2 {
+      font-size: 24px;
+  }
+
+  .section h3 {
+      font-size: 16px;
+  }
+
+  .formGroup label {
+      font-size: 12px;
+  }
+
+  .formGroup input {
+      font-size: 12px;
+      padding: 6px;
+  }
+
+  .submitButton {
+      padding: 8px;
+      font-size: 12px;
+  }
+}

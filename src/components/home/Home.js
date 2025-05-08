@@ -7,7 +7,7 @@ import LastSupper from '../../images/LastSupper.webp'
 import StarryNight from '../../images/StarryNight.jpg'
 import TheRaft from '../../images/TheRaft.jpeg'
 import TheScream from '../../images/TheScream.webp'
-
+import ArtriaLogoCropped from '../../images/ArtriaLogoCropped.webp'
 const Home = () => {
     return (
         <div className={styles.container}>
@@ -23,9 +23,10 @@ const Home = () => {
                 </div>
             </div>
             <div className={styles.content}>
-                <h1 className={styles.title}>Art Shopper</h1>
+                <img src={ArtriaLogoCropped} alt="Artria Logo" className={styles.logoImage} />
+                <h1 className={styles.title}>ARTRIA</h1>
                 <p className={styles.story}>
-                Art should be accessible, inspiring, and part of everyday life. That’s why we built Art Shopper — a platform where anyone can explore and own the world’s most iconic masterpieces.
+                Art should be accessible, inspiring, and part of everyday life. That’s why we built Artria — a platform where anyone can explore and own the world’s most iconic masterpieces.
                 Powered by the Metropolitan Museum of Art’s open-access API, our curated collection spans centuries, offering a seamless way to discover and appreciate art from every era. 
                 Whether you’re a seasoned collector or a curious newcomer, we’re here to help you bring the beauty of timeless art into your space, one masterpiece at a time.
                 </p>

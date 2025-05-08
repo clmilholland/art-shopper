@@ -33,6 +33,7 @@ const GatherArtwork = () => {
     const [isFiltered, setIsFiltered] = useState(false);
     const [filterType, setFilterType] = useState(null);
     const [filterValue, setFilterValue] = useState(null);
+    console.log(isFiltered)
 
     // Fetch artworkIDs if not already fetched
     useEffect(() => {
@@ -74,7 +75,8 @@ const GatherArtwork = () => {
     return (
         <div className={styles.container}>
             <SideFilter setIsFiltered={setIsFiltered} setFilterType={setFilterType} setFilterValue={setFilterValue} artwork={artwork} />
-            {hasAllArtworkData ? <button onClick={handleRefresh} className={styles.refreshButton}>Refresh Artwork</button> : null}
+            <div className={styles.artworkContainer}>
+            {hasAllArtworkData && !isFiltered ? <button onClick={handleRefresh} className={styles.refreshButton}>Refresh Artwork</button> : null}
             <div className={styles.grid}>
                 {error ? (
                     <p className={styles.error}>Error: {error}</p>
@@ -83,6 +85,7 @@ const GatherArtwork = () => {
                 ) : (
                     artworkToDisplay()
                 )}
+            </div>
             </div>
         </div>
     );

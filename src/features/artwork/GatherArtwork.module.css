@@ -1,21 +1,30 @@
 .container {
-    padding: 20px;
-    margin-top: 80px; /* Account for the fixed header */
-    max-width: 1600px; /* Center the content with a max width */
-    margin-left: auto;
-    margin-right: auto;
-    display: flex; /* Use flex to layout grid and sidebar */
-    gap: 20px; /* Space between grid and sidebar */
+    display: flex;
+    gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
+    background: linear-gradient(135deg, #2c3e50 0%, #1a2634 100%);
+    min-height: calc(100vh - 60px);
+    box-sizing: border-box;
+}
+
+.artworkContainer {
+    margin-left: 190px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Exactly 4 columns */
-    gap: 15px; /* Reduced gap for a tighter layout */
-    flex-grow: 1; /* Take up remaining space */
-    margin-left: 190px; /* Offset for the fixed SideFilter (150px width + 20px padding + 20px gap) */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px)); /* Fixed max width at 300px */
+    gap: 25px;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .loading {
@@ -34,7 +43,7 @@
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-left: 200px;
+    margin-bottom: 30px;
 }
 
 .refreshButton:hover {
@@ -43,29 +52,37 @@
 
 /* Responsive design */
 @media (max-width: 1024px) {
+    .artworkContainer {
+        margin-left: 220px;
+    }
     .grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
-        margin-left: 240px; /* Adjust for wider SideFilter (200px width + 20px padding + 20px gap) */
-        gap: 12px; /* Slightly smaller gap */
+        grid-template-columns: repeat(auto-fit, minmax(180px, 300px)); /* Adjusted min width */
+        gap: 12px;
     }
 }
 
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; /* Stack grid and sidebar vertically */
+        flex-direction: column;
+        align-items: center;
     }
-
+    .artworkContainer {
+        margin-left: 0;
+        padding: 15px;
+    }
     .grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
-        margin-left: 0; /* No offset since SideFilter is no longer fixed */
-        max-width: 100%; /* Full width */
-        gap: 10px; /* Smaller gap on mobile */
+        grid-template-columns: repeat(auto-fit, minmax(160px, 300px)); /* Adjusted min width */
+        gap: 10px;
+        max-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
+    .artworkContainer {
+        padding: 10px;
+    }
     .grid {
-        grid-template-columns: 1fr; /* 1 column on very small screens */
-        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 300px)); /* Adjusted min width */
+        gap: 8px;
     }
 }

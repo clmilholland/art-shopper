@@ -4,6 +4,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { selectCart } from "../../features/cart/cartSlice";
 import { useSelector } from "react-redux";
 import styles from './Header.module.css';
+import ArtriaLogoCropped from '../../images/ArtriaLogoCropped.webp'
 
 const Header = () => {
     const cart = useSelector(selectCart);
@@ -11,7 +12,8 @@ const Header = () => {
 
     return (
         <header className={styles.header}>
-    <h2 className={styles.logo}>Art Shopper</h2>
+    <h2 className={styles.logoText}>ARTRIA</h2>
+    <img src={ArtriaLogoCropped} alt="Artria logo" className={styles.logo}/>
     <div className={styles.rightSection}>
         <nav className={styles.nav}>
             <NavLink to="/" className={({ isActive }) => isActive ? styles.activeLink : styles.link}>Home</NavLink>

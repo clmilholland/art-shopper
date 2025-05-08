@@ -1,66 +1,166 @@
+.wrapper {
+  width: 100%;
+  min-height: calc(100vh - 62px);
+  background: linear-gradient(135deg, #2c3e50 0%, #1a2634 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #ecf0f1;
+  overflow: hidden;
+}
+
 .cartContainer {
-    width: 100%;
-    max-width: 800px;
-    margin: 16px auto;
-    padding: 16px;
-    background-color: #ffffff;
-    border: 1px solid #e2e2e2;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1000px;
+  width: 100%;
+  align-items: center;
+}
+
+.cartContainer h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ecf0f1;
+  text-align: center;
+  margin: 0 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cartItemContainer {
+  width: 100%;
+  background-color: #34495e;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid #465c71;
+}
+
+.cartItemContainer .emptyCart {
+  text-align: center;
+  font-size: 16px;
+  color: #ecf0f1;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.cartItemContainer h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ecf0f1;
+  text-align: center;
+  margin: 15px 0 10px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.buttonContainer {
+  align-self: center;
+}
+
+.checkoutButton {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: #ecf0f1;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  max-width: 300px;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.checkoutButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.checkoutButton:focus {
+  outline: none;
+}
+
+.checkoutButton:active {
+  transform: scale(0.98);
+}
+
+.checkoutButton::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.checkoutButton:hover::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .wrapper {
+      height: auto;
+      overflow: visible;
+      padding: 20px;
+      background: #2c3e50;
   }
-  
-  .cartContainer h1 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #2d2d2d;
-    margin-bottom: 16px;
-    text-align: center;
-  }
-  
+
   .cartItemContainer {
-    width: 100%;
-    background-color: #f9f9f9;
-    padding: 12px;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 16px;
+      padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cartContainer h1 {
+      font-size: 30px;
   }
 
+  .cartItemContainer {
+      padding: 15px;
+  }
 
-  .cartItemContainer .emptyCart {
-    text-align: center;
-  }
-  
-  .cartContainer h2 {
-    font-size: 20px;
-    font-weight: 700;
-    color: #d32f2f;
-    text-align: center;
-    margin-top: 8px;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .cartContainer {
-      padding: 12px;
-      margin: 12px;
-    }
-  
-    .cartContainer h1 {
+  .cartItemContainer h2 {
       font-size: 20px;
-    }
-  
-    .cartItemContainer {
-      padding: 8px;
-    }
-  
-    .cartContainer h2 {
-      font-size: 18px;
-    }
   }
+
+  .checkoutButton {
+      padding: 10px;
+      font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cartContainer h1 {
+      font-size: 24px;
+  }
+
+  .cartItemContainer {
+      padding: 10px;
+  }
+
+  .cartItemContainer h2 {
+      font-size: 18px;
+  }
+
+  .checkoutButton {
+      padding: 8px;
+      font-size: 12px;
+  }
+}

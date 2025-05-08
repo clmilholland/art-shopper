@@ -11,8 +11,14 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  overflow-y: scroll;
+  overflow-y: auto; /* Scroll only when needed */
   overscroll-behavior: contain;
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.sideFilter::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
 }
 
 .header {

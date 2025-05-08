@@ -16,9 +16,11 @@ const SideFilter = ({setIsFiltered, artwork}) => {
 
   const priceInputRef = useRef(null);
   const endDateInputRef = useRef(null);
+  console.log(activeFilters)
 
   const handleSetFilter = (event) => {
-    setIsFiltered(true);
+
+    //setIsFiltered(true);
     const { id, type, checked, dataset } = event.target;
     const action = dataset.action || "apply"; // Default to "apply" if no action specified
 
@@ -61,6 +63,12 @@ const SideFilter = ({setIsFiltered, artwork}) => {
       }
     }
   };
+
+  if(activeFilters.length > 0) {
+    setIsFiltered(true);
+  } else {
+    setIsFiltered(false)
+  }
 
   useEffect(() => {
     dispatch(clearCultureFilters());
