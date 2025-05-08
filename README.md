@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+ArtShopper App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Deployed App: https://artria-artshopper.netlify.app/
 
-## Available Scripts
+Overview
+ArtShopper is a web application designed to browse and filter a collection of artworks, allowing users to explore various cultures, set price ranges, and filter by end dates. The app features a responsive design, optimized for both desktop and mobile devices, with a user-friendly interface to enhance the art shopping experience.
+Features
 
-In the project directory, you can run:
+Artwork Browsing: View a grid of artwork items with details such as title, date, price, and an image.
+Filter Options: Filter artworks by culture, maximum price, and maximum end date using a collapsible side panel on mobile devices.
+Responsive Design: Adapts seamlessly to different screen sizes, with a mobile-friendly layout.
+Refresh Functionality: Ability to refresh the artwork list to reload data.
+Cart Integration: Option to add artworks to a cart (placeholder functionality included).
 
-### `npm start`
+Installation
+Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Node.js (v14.x or later)
+npm (v6.x or later)
+A modern web browser (Chrome, Firefox, Safari, etc.)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Setup
 
-### `npm test`
+Clone the repository:git clone https://github.com/yourusername/artshopper.git
+cd artshopper
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Install dependencies:npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Start the development server:npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+Open your browser and navigate to http://localhost:3000 to view the app.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Browse Artworks: Scroll through the grid of artwork cards to explore available items.
+Filter Artworks: On mobile, tap the "Filter ☰" button to open the filter panel. Select cultures, enter a maximum price, or set a maximum end date, then click "Apply" to filter.
+Refresh: Click "Refresh Artwork" to reload the artwork list.
+Add to Cart: Click "Add to Cart" on an artwork card to add it (note: this is a placeholder and requires backend integration for full functionality).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Technologies Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Frontend: React.js
+State Management: Redux
+CSS: CSS Modules with responsive design using clamp()
+Build Tool: npm
 
-## Learn More
+Project Structure
+artshopper/
+├── src/
+│   ├── components/         # Reusable UI components (e.g., Artwork, SideFilter)
+│   ├── features/           # Redux feature slices (e.g., gatherArtworkSlice, filteredArtworkSlice)
+│   ├── App.js              # Main app component
+│   ├── index.js            # Entry point
+│   └── styles/             # CSS modules
+├── README.md               # This file
+├── package.json            # Project dependencies and scripts
+└── ...
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Fork the repository.
+Create a new branch (git checkout -b feature-branch).
+Make your changes and commit them (git commit -m "Add new feature").
+Push to the branch (git push origin feature-branch).
+Open a pull request.
 
-### Code Splitting
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
+Contact
+For questions or support, please open an issue on the GitHub repository or contact the maintainers.
+Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Thanks to the open-source community for tools like React and Redux.
+Artwork data inspired by public domain collections.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
