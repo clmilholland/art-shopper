@@ -16,7 +16,7 @@ const Message = () => {
 
             return () => clearTimeout(timer);
         }
-    }, [message, clearMessage]);
+    }, [message, clearMessage, dispatch]);
 
     if (!message) return null;
 

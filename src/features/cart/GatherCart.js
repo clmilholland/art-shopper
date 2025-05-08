@@ -1,6 +1,6 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart, selectCart } from "./cartSlice";
+import { useSelector } from "react-redux";
+import { selectCart } from "./cartSlice";
 import ItemInCart from "../../components/cart/ItemInCart";
 import styles from './GatherCart.module.css';
 import { Link } from "react-router-dom";

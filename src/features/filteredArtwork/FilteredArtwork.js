@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { selectAllArtworkIDs, selectAllArtwork } from "../artwork/gatherArtworkSlice";
+import React from "react";
 import Artwork from "../../components/artwork/Artwork";
 
 const FilteredArtwork = ({ activeFilters, artworkList }) => {

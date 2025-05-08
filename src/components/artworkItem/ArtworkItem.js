@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAllArtwork } from "../../features/artwork/gatherArtworkSlice";
 import { addToCart, selectCart } from "../../features/cart/cartSlice";
