@@ -147,6 +147,8 @@
   .date {
       font-size: 13px;
       margin: 0 0 8px;
+      max-height: 16px;
+      overflow: hidden;
   }
 
   .artworkPrice {

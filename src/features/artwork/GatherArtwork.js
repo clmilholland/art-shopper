@@ -33,9 +33,16 @@ const GatherArtwork = () => {
     const [isFiltered, setIsFiltered] = useState(false);
     const [filterType, setFilterType] = useState(null);
     const [filterValue, setFilterValue] = useState(null);
-    console.log(isFiltered)
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-    // Fetch artworkIDs if not already fetched
+    useEffect(() => {
+        if (activeFilters.length > 0) {
+            setIsFiltered(true);
+        } else {
+            setIsFiltered(false);
+        }
+    }, [activeFilters]);
+
     useEffect(() => {
         if (!hasFetchedArtworkIDs && !gatheringArtworkIDs.has('fetching')) {
             gatheringArtworkIDs.add('fetching');
@@ -45,7 +52,6 @@ const GatherArtwork = () => {
         }
     }, [dispatch, hasFetchedArtworkIDs]);
 
-    // Fetch artwork data when IDs are available and not yet dispatched
     useEffect(() => {
         if (artworkIDs.length > 0 && !hasDispatchedAllArtwork) {
             artworkIDs.forEach((id) => {
@@ -72,20 +78,29 @@ const GatherArtwork = () => {
         gatheringArtworkIDs.clear();
     }, [dispatch]);
 
+
     return (
         <div className={styles.container}>
-            <SideFilter setIsFiltered={setIsFiltered} setFilterType={setFilterType} setFilterValue={setFilterValue} artwork={artwork} />
+            <SideFilter
+                setIsFiltered={setIsFiltered}
+                artwork={artwork}
+                className={styles.sideFilter}
+            />
             <div className={styles.artworkContainer}>
-            {hasAllArtworkData && !isFiltered ? <button onClick={handleRefresh} className={styles.refreshButton}>Refresh Artwork</button> : null}
-            <div className={styles.grid}>
-                {error ? (
-                    <p className={styles.error}>Error: {error}</p>
-                ) : loading || !hasAllArtworkData ? (
-                    <p className={styles.loading}>Loading...</p>
-                ) : (
-                    artworkToDisplay()
-                )}
-            </div>
+                {hasAllArtworkData && !isFiltered ? (
+                    <button onClick={handleRefresh} className={styles.refreshButton}>
+                        Refresh Artwork
+                    </button>
+                ) : null}
+                <div className={styles.grid}>
+                    {error ? (
+                        <p className={styles.error}>Error: {error}</p>
+                    ) : loading || !hasAllArtworkData ? (
+                        <p className={styles.loading}>Loading...</p>
+                    ) : (
+                        artworkToDisplay()
+                    )}
+                </div>
             </div>
         </div>
     );

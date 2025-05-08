@@ -235,7 +235,7 @@
     .infoItem {
         min-width: 0;
         text-align: center;
-        width: 100%;
+        /* width: 100%; */
         max-width: 300px;
     }
 

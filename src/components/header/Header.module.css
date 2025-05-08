@@ -1,9 +1,9 @@
 .header {
     display: flex;
-    justify-content: space-between; /* Logo left, links right */
+    justify-content: space-between;
     align-items: center;
     background-color: #2c3e50;
-    padding: 0px 30px;
+    padding: 0 clamp(10px, 2.5vw, 30px);
     position: fixed;
     top: 0;
     left: 0;
@@ -11,78 +11,82 @@
     box-sizing: border-box;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
 }
 
 .logoText {
     margin: 0;
-    font-size: 24px;
+    font-size: clamp(18px, 2.5vw, 24px);
     font-weight: 700;
     font-family: "EB Garamond", serif;
     font-style: italic;
     color: #ecf0f1;
     flex-shrink: 0;
-    padding: 15px 0px;
+    padding: clamp(10px, 2vw, 15px) 0;
+    margin-right: 10px; /* Space between text and image */
 }
 
-.logo {
-    height: 4rem;
-    position: relative;
-    right: 38%;
+.logo img {
+    height: clamp(3rem, 10vw, 4rem);
+    max-width: 100%;
 }
 
 .rightSection {
     display: flex;
     align-items: center;
-    gap: 20px; /* Space between nav and cart */
+    gap: clamp(10px, 2vw, 20px);
 }
 
 .nav {
     display: flex;
-    gap: 20px;
+    gap: clamp(10px, 2vw, 20px);
     align-items: center;
 }
 
 .link {
     color: #ecf0f1;
     text-decoration: none;
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .link:hover {
+    transform: scale(1.05);
     color: #3498db;
 }
 
 .activeLink {
     color: #3498db;
     text-decoration: none;
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
     font-weight: 500;
 }
 
-/* Cart container styling */
 .cartContainer {
     position: relative;
     display: flex;
     align-items: center;
     color: #ecf0f1;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-/* Hover effect for entire Cart link (text + icon) */
 .cartContainer:hover {
+    transform: scale(1.05);
     color: #3498db;
 }
 
 .cartIcon {
-    font-size: 20px;
+    font-size: clamp(16px, 2.5vw, 20px);
     margin-left: 5px;
-    /* inherits color from cartContainer */
 }
 
-/* ✅ PRESERVED: Red circular badge for cart count */
 .cartCount {
     position: absolute;
     top: -10px;
@@ -95,38 +99,70 @@
     font-weight: 600;
 }
 
-/* ✅ Responsive design for mobile screens */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     .header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 20px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: clamp(5px, 2vw, 10px) clamp(10px, 2vw, 20px);
     }
 
     .rightSection {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
         width: 100%;
+        background-color: #2c3e50;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(5px, 1.5vw, 10px);
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: none; /* Hidden by default */
+    }
+
+    .rightSection.active {
+        display: flex; /* Show when toggled */
     }
 
     .nav {
         flex-direction: column;
-        gap: 10px;
+        gap: clamp(5px, 1.5vw, 10px);
         width: 100%;
     }
 
     .link,
     .activeLink {
-        font-size: 14px;
-    }
-
-    .logo {
-        font-size: 20px;
-        margin-bottom: 10px;
+        font-size: clamp(12px, 2vw, 14px);
+        padding: 5px 0;
+        width: 100%;
+        text-align: center;
     }
 
     .cartContainer {
-        margin-top: 10px;
+        margin-top: clamp(5px, 1.5vw, 10px);
+        width: 100%;
+        justify-content: center;
+    }
+
+    .menuToggle {
+        display: block;
+        font-size: clamp(20px, 3vw, 24px);
+        color: #ecf0f1;
+        cursor: pointer;
+        padding: clamp(5px, 1.5vw, 10px);
+        background: none;
+        border: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .menuToggle {
+        display: none;
+    }
+
+    .rightSection {
+        display: flex;
     }
 }

@@ -1,14 +1,14 @@
 .container {
     width: 100%;
-    min-height: calc(100vh - 62px); /* Account for fixed header */
+    height: calc(100vh - 62px); /* Full viewport height */
     background: linear-gradient(135deg, #2c3e50 0%, #1a2634 100%);
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    padding: 40px 20px;
+    /* padding: clamp(80px, 15vh, 120px) clamp(10px, 2vw, 20px) 20px; Adjusted for fixed header */
     box-sizing: border-box;
-    color: #ecf0f1; /* Light text for contrast */
-    overflow-y: hidden;
+    color: #ecf0f1;
+    overflow-y: auto; /* Changed from hidden to auto for better mobile scrolling */
 }
 
 .content {
@@ -17,69 +17,68 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* gap: 30px; */
-    max-width: 800px; /* Constrain content width for readability */
+    gap: clamp(10px, 2vw, 30px); /* Added back for better spacing */
+    max-width: 800px;
     margin: 0 auto;
 }
 
 .logoImage {
-    max-width: 400px;
-
+    max-width: clamp(200px, 40vw, 400px); /* Scales logo */
+    width: 100%;
 }
 
 .artworkColumnLeft,
 .artworkColumnRight {
-    width: 250px; /* Fixed width for artwork columns */
+    width: clamp(200px, 20vw, 250px); /* Flexible width */
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 0 20px;
+    gap: clamp(10px, 2vw, 20px);
+    padding: 0 clamp(10px, 2vw, 20px);
     justify-content: space-evenly;
 }
 
 .title {
-    font-size: 36px;
+    font-size: clamp(24px, 4vw, 36px);
     font-weight: 700;
     font-family: "EB Garamond", serif;
     font-style: italic;
-    color: #ecf0f1; /* Light text */
+    color: #ecf0f1;
     text-align: center;
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 2px;
-    bottom: 40px;
-    position: relative;
+    position: static; /* Removed unnecessary positioning */
 }
 
 .story {
-    font-size: 16px;
+    font-size: clamp(13px, 1.8vw, 16px);
     line-height: 1.6;
-    color: #ecf0f1; /* Light text */
+    color: #ecf0f1;
     text-align: center;
-    /* background-color: #34495e; Slightly lighter background */
-    padding: 20px;
+    background-color: #34495e;
+    padding: clamp(10px, 2vw, 20px);
     border-radius: 5px;
-    margin-top: 0px;
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); Subtle shadow */
+    margin: 0;
 }
 
 .shopButton {
     display: inline-block;
-    padding: 12px 24px;
-    background-color: #3498db; /* Blue to match SideFilter submitButton */
-    color: #ecf0f1; /* Light text */
+    padding: clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 24px);
+    background-color: #3498db;
+    color: #ecf0f1;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: clamp(13px, 1.8vw, 16px);
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     text-align: center;
-    margin-top: 40px;
+    margin-top: clamp(20px, 3vw, 40px);
 }
 
 .shopButton:hover {
-    background-color: #2980b9; /* Darker blue on hover */
+    background-color: #2980b9;
+    transform: scale(1.05); /* GPU-accelerated */
 }
 
 .shopButton:focus {
@@ -92,10 +91,10 @@
 }
 
 .artworkCard {
-    background-color: #34495e; /* Slightly lighter than container */
+    background-color: #34495e;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6); /* Match SideFilter shadow */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -106,82 +105,104 @@
 
 .artworkImage {
     width: 100%;
-    height: 230px; /* Match previous placeholder height */
-    object-fit: cover; /* Ensure image covers area without distortion */
+    height: clamp(150px, 20vw, 230px); /* Scales image height */
+    object-fit: cover;
     display: block;
-    background-color: #465c71; /* Fallback if image fails to load */
+    background-color: #465c71;
 }
 
-
-
-/* Responsive design */
+/* Tablet (1024px and below) */
 @media (max-width: 1024px) {
     .container {
         flex-direction: column;
         align-items: center;
-        padding: 20px;
+        padding: clamp(60px, 12vh, 100px) clamp(10px, 2vw, 20px) 20px; /* Adjusted for header */
+        gap: clamp(20px, 3vw, 30px);
     }
 
     .artworkColumnLeft,
     .artworkColumnRight {
         width: 100%;
-        max-width: 500px;
+        max-width: 600px;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        gap: clamp(10px, 2vw, 15px);
         padding: 0;
     }
 
     .artworkCard {
-        width: 200px;
+        width: clamp(150px, 30vw, 200px);
+    }
+
+    .artworkImage {
+        height: clamp(120px, 25vw, 180px);
     }
 
     .content {
         max-width: 100%;
-        padding: 0 20px;
+        padding: 0 clamp(10px, 2vw, 20px);
     }
 }
 
+/* Mobile (768px and below) */
 @media (max-width: 768px) {
-    .title {
-        font-size: 28px;
-    }
-
-    .story {
-        font-size: 14px;
-        padding: 15px;
-    }
-
-    .shopButton {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-
-    .artworkPlaceholder {
-        height: 150px;
-    }
-
-    .artworkCard {
-        width: 180px;
-    }
-}
-
-@media (max-width: 480px) {
-    .title {
-        font-size: 24px;
-    }
-
-    .story {
-        font-size: 13px;
-    }
-
-    .shopButton {
-        padding: 8px 16px;
-        font-size: 13px;
+    .artworkColumnLeft,
+    .artworkColumnRight {
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(10px, 2vw, 15px);
     }
 
     .artworkCard {
         width: 100%;
+        max-width: 300px;
+    }
+
+    .artworkImage {
+        height: clamp(150px, 40vw, 200px);
+    }
+
+    .title {
+        font-size: clamp(20px, 3.5vw, 28px);
+    }
+
+    .story {
+        font-size: clamp(12px, 1.6vw, 14px);
+        padding: clamp(8px, 1.5vw, 15px);
+    }
+
+    .shopButton {
+        padding: clamp(6px, 1.2vw, 10px) clamp(12px, 2.5vw, 20px);
+        font-size: clamp(12px, 1.6vw, 14px);
+    }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+    .container {
+        padding: clamp(50px, 10vh, 80px) 10px 10px;
+    }
+
+    .title {
+        font-size: clamp(18px, 3vw, 24px);
+    }
+
+    .story {
+        font-size: clamp(11px, 1.5vw, 13px);
+        padding: 10px;
+    }
+
+    .shopButton {
+        padding: clamp(6px, 1vw, 8px) clamp(12px, 2vw, 16px);
+        font-size: clamp(11px, 1.5vw, 13px);
+    }
+
+    .artworkCard {
         max-width: 250px;
+    }
+
+    .artworkImage {
+        height: clamp(120px, 35vw, 180px);
     }
 }

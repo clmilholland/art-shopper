@@ -1,15 +1,19 @@
 /* src/components/Notification.module.css */
 .notification {
     position: fixed;
-    top: 10px;
-    left: 55%;
+    top: 70px;
+    left: calc(120px + 50%); /* Start from sidebar edge, then center */
     transform: translateX(-50%);
-    background-color: #4caf50; /* Green background */
+    background-color: #4caf50;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     z-index: 1000;
     animation: fadeInOut 2s ease-in-out;
+    max-width: calc(100vw - 240px - 20px); /* Ensure it fits in main content area */
+    box-sizing: border-box;
+    text-align: center;
+    word-wrap: break-word;
 }
 
 /* Animation for fading in and out */
@@ -18,4 +22,18 @@
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .notification {
+        top: 90px;
+        left: 50%; /* Start from sidebar edge, then center */
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .notification {
+        max-width: 300px;
+    }
 }
