@@ -47,18 +47,6 @@ State Management: Redux
 CSS: CSS Modules with responsive design using clamp()
 Build Tool: npm
 
-Project Structure
-artshopper/
-├── src/
-│   ├── components/         # Reusable UI components (e.g., Artwork, SideFilter)
-│   ├── features/           # Redux feature slices (e.g., gatherArtworkSlice, filteredArtworkSlice)
-│   ├── App.js              # Main app component
-│   ├── index.js            # Entry point
-│   └── styles/             # CSS modules
-├── README.md               # This file
-├── package.json            # Project dependencies and scripts
-└── ...
-
 Contributing
 
 Fork the repository.
