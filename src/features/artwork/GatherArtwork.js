@@ -57,7 +57,7 @@ const GatherArtwork = () => {
     const artworkToDisplay = () => {
         const artworkList = artworkIDs
             .map((id) => artwork[id])
-            .filter((artwork) => artwork && artwork.primaryImage?.length > 0);
+            .filter((artwork) => artwork && artwork.primaryImageSmall?.length > 0);
 
         if (!isFiltered) {
             return artworkList.map((artwork) => (

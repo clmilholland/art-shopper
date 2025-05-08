@@ -20,7 +20,7 @@ const Artwork = ({ artwork }) => {
             <Link to={`/artwork/${artwork.objectID}`} className={styles.artworkLink}>
                 <h1 className={styles.artworkTitle}>{artwork.title}</h1>
                 <h4 className={styles.date}>Date: {artwork.objectDate}</h4>
-                <img src={artwork.primaryImage} className={styles.artworkImage} alt={artwork.title} />
+                <img src={artwork.primaryImageSmall} className={styles.artworkImage} alt={artwork.title} loading='lazy' />
                 <h4 className={styles.artworkPrice}>Price: ${artwork.price}</h4>
             </Link>
             <button

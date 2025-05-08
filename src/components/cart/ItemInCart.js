@@ -14,7 +14,7 @@ const ItemInCart = ({item}) => {
                 <h4>{item.artistDisplayName}</h4>
                 <h5>Price: <section>${item.price}</section></h5>
             </div>
-            <img src={item.primaryImage} alt={item.title}/>
+            <img src={item.primaryImageSmall} alt={item.title}/>
             <button onClick={() => dispatch(removeFromCart(item.objectID))} className={styles.removeButton} />
         </div>
     )
